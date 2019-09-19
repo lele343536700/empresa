@@ -4,19 +4,39 @@
  * and open the template in the editor.
  */
 package tela.manutencao;
-
+import tela.listagem.ListagemEmpresa;
 /**
  *
  * @author Administrador
  */
 public class ManutencaoEmpresa extends javax.swing.JDialog {
-
-    /**
+    public ListagemEmpresa listagem;
+    //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
+ public ManutencaoEmpresa(java.awt.Frame parent, boolean modal, ListagemEmpresa listagem) {
+        super(parent, modal);
+        initComponents();
+        this.listagem = listagem;
+        
+        jtfcodigo.setEnabled(false);  //desabilitando a edição do campo código
+        btnalterar.setEnabled(false); //desabilitando o botão alterar
+        btnexcluir.setEnabled(false); //desabilitando o botão excluir
+        
+  }
+    public ManutencaoEmpresa(java.awt.Frame parent, boolean modal, ListagemEmpresa listagem, int pk) {
+        super(parent, modal);
+        initComponents();
+        
+        jtfcodigo.setEnabled(false);  //desabilitando a edição do campo código
+        this.listagem = listagem;
+        controlador.ControladorEmpresa.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
+    }  /**
      * Creates new form ManutencaoEmpresa
      */
     public ManutencaoEmpresa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        
     }
 
     /**
